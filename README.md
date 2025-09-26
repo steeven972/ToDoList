@@ -6,9 +6,9 @@ Ce projet a été développé pour pratiquer la programmation orientée objet (O
 
 # Fonctionnalités
 
--Ajouter et supprimer des taches dans la To-Do-List
--Intégration des données dans un fichier Task.json
--Interface GUI avec PyQt5
+-Ajouter et supprimer des taches dans la To-Do-List.
+-Intégration des données dans un fichier Task.json.
+-Interface GUI avec PyQt5.
 # Installation
 git clone https://github.com/steeven972/ToDoList.git
 cd ToDoList
