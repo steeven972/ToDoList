@@ -1,0 +1,12 @@
+.env/
+*.pyc
+__pycache__/
+
+.vscode/
+
+*.log
+*.tmp
+
+/lib
+
+*.cfg
