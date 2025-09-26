@@ -30,12 +30,19 @@ class Task:
     def get_status(self):
         return self.status
     
+    
+    def set_status(self, state):
+        data = self.load()
+        if state == 2 and data:
+            self.status = True
+            data[str(1)][0]["status"] = self.status
+            self.save_data(data)
+        else:
+            self.status = False
+            data[str(1)][0]["status"] = self.status
+    
     def get_time(self):
         return self.date
-    
-    def set_status(self, index, state):
-        self.status = state
-        return self.status
     
     @classmethod
     def save_data(cls, data):

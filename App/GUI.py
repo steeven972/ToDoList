@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QLineEdit, QLabel, QPushButton, QWidget, QVBoxLayout, QApplication, QGroupBox, QHBoxLayout, QListWidgetItem,QListWidget, QMessageBox
+from PyQt5.QtWidgets import QLineEdit, QLabel, QPushButton, QWidget, QVBoxLayout, QApplication, QGroupBox, QHBoxLayout, QListWidgetItem,QListWidget, QMessageBox, QCheckBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 import sys
@@ -14,10 +14,18 @@ class TaskWidget(QWidget):
         layout.setContentsMargins(0, 0, 0, 0)
 
         # Label de la tâche
-        self.label = QLabel(f"{task.name} | Accomplish: {task.status}")
+        self.label = QLabel(f"{self.task.name} | Accomplish: {self.task.status}")
         layout.addWidget(self.label)
 
         # Bouton supprimer
+
+        self.btnCheck = QCheckBox()
+        self.btnCheck.setFixedWidth(25)
+        self.btnCheck.setStyleSheet("color: green; font-weight: bold")
+        layout.addWidget(self.btnCheck)
+        
+        self.btnCheck.stateChanged.connect(self.update_status_label)
+
         self.btnDelete = QPushButton("✖")
         self.btnDelete.setFixedWidth(25)
         self.btnDelete.setStyleSheet("color: red; font-weight: bold;")
@@ -36,6 +44,11 @@ class TaskWidget(QWidget):
             if widget == self:
                 self.parent_list.takeItem(i)
                 break
+    def update_status_label(self, state):
+        self.task.set_status(state)
+
+        self.label.setText(f"{self.task.name} | Accomplish: {self.task.status}")
+    
 
 class MyWidget(QWidget):
     def __init__(self):
